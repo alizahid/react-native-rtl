@@ -71,13 +71,24 @@ export default class RTLapp extends Component {
 
 				<ListView
 					style={styles.list}
-					renderScrollComponent={props => <InvertibleScrollView {...props} inverted />}
+					renderScrollComponent={props => <InvertibleScrollView {...props} />}
 					contentContainerStyle={styles.listContainer}
 					dataSource={this.state.dataSource}
 					renderRow={rowData => <Text style={styles.listItem}>{rowData}</Text>}
 					horizontal={true}
 				/>
 
+				<View style={styles.separator}/>
+
+				<ListView
+					style={styles.list}
+					renderScrollComponent={props => <InvertibleScrollView {...props} inverted />}
+					contentContainerStyle={styles.listContainer}
+					dataSource={this.state.dataSource}
+					renderRow={rowData => <Text style={styles.listItem}>{rowData}</Text>}
+					horizontal={true}
+				/>
+				
 				<View style={styles.separator}/>
 
 				<Text style={styles.arabic}>أدخل عنوان البريد الإلكتروني الذي استخدمته لإنشاء حساب جادو بادو الخاص بك وسوف نرسل لك رسالة بريد إلكتروني لإعادة تعيين كلمة السر</Text>

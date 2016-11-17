@@ -8,7 +8,8 @@
   },
   "dependencies": {
     "react": "15.3.2",
-    "react-native": "0.36.1"
+    "react-native": "^0.37.0",
+    "react-native-invertible-scroll-view": "github:alizahid/react-native-invertible-scroll-view"
   },
   "jest": {
     "preset": "jest-react-native"
