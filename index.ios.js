@@ -13,6 +13,7 @@ import {
 } from 'react-native'
 
 import InvertibleScrollView from 'react-native-invertible-scroll-view'
+import ScrollableTabView from 'react-native-scrollable-tab-view'
 
 export default class RTLapp extends Component {
     constructor() {
@@ -52,6 +53,23 @@ export default class RTLapp extends Component {
 
                 <View style={styles.separator}/>
 
+                <ScrollableTabView style={styles.tabView} renderTabBar={this._renderTabBar}>
+                    <View style={styles.tab} tabLabel="One">
+                        <Text style={styles.dropCap}>1</Text>
+                        <Text style={styles.paragraph}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pellentesque, mauris in bibendum varius, purus metus scelerisque orci, in tristique neque leo luctus nulla. Sed vitae posuere orci. Donec tristique nunc metus, eu venenatis purus hendrerit et.</Text>
+                    </View>
+                    <View style={styles.tab} tabLabel="Two">
+                        <Text style={styles.dropCap}>2</Text>
+                        <Text style={styles.paragraph}>Morbi id nulla pharetra, consequat felis quis, egestas justo. Vestibulum eget est ac mauris aliquet placerat in vel est. Suspendisse scelerisque faucibus sapien, sit amet interdum enim ullamcorper at. Proin rutrum, sapien id fermentum rutrum, justo ex euismod ligula, quis maximus justo nisi ultrices arcu.</Text>
+                    </View>
+                    <View style={styles.tab} tabLabel="Three">
+                        <Text style={styles.dropCap}>3</Text>
+                        <Text style={styles.paragraph}>Nulla velit nibh, porta a ex ac, vehicula commodo est. Maecenas sed sodales dolor, eu auctor nulla. Quisque eget augue arcu. Proin non metus eu purus ultrices maximus a eget urna. Aliquam erat volutpat. Sed a leo metus. Donec ultricies quam sed tellus aliquet vestibulum. Donec ac turpis tempor, egestas magna ut, laoreet arcu.</Text>
+                    </View>
+                </ScrollableTabView>
+
+                <View style={styles.separator}/>
+
                 <View style={styles.things}>
                     <Text style={[styles.thing, styles.red]}>1</Text>
                     <Text style={[styles.thing, styles.blue]}>2</Text>
@@ -86,6 +104,45 @@ export default class RTLapp extends Component {
 
         return <Text style={style}>{text}</Text>
     }
+
+    _renderTabBar(props) {
+        let styles = {
+            container: {
+                alignItems: 'center',
+                bottom: 0,
+                height: 20,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                position: 'absolute',
+                width: props.containerWidth,
+                zIndex: 1
+            },
+            link: {
+                backgroundColor: 'lightgray',
+                borderRadius: 3,
+                height: 6,
+                marginHorizontal: 2,
+                width: 6
+            },
+            active: {
+                backgroundColor: 'gray'
+            }
+        }
+
+        let tabs = React.Children.map(props.tabs, (tab, index) => {
+            let isActive = props.activeTab === index
+
+            let style = [styles.link]
+
+            if (isActive) {
+                style.push(styles.active)
+            }
+
+            return <View style={style}></View>
+        })
+
+        return <View style={[styles.container, props.style]}>{tabs}</View>
+    }
 }
 
 const styles = StyleSheet.create({
@@ -97,6 +154,21 @@ const styles = StyleSheet.create({
     },
     container: {
         alignItems: 'stretch'
+    },
+    tabView: {
+        backgroundColor: 'white'
+    },
+    tab: {
+        flexDirection: 'row',
+        padding: 20,
+        height: 200
+    },
+    dropCap: {
+        alignSelf: 'flex-start',
+        fontSize: 20
+    },
+    paragraph: {
+        marginLeft: 10
     },
     things: {
         flexDirection: 'row'

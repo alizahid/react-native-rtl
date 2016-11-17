@@ -9,7 +9,8 @@
   "dependencies": {
     "react": "15.3.2",
     "react-native": "^0.37.0",
-    "react-native-invertible-scroll-view": "github:alizahid/react-native-invertible-scroll-view"
+    "react-native-invertible-scroll-view": "github:alizahid/react-native-invertible-scroll-view",
+    "react-native-scrollable-tab-view": "github:jadopado/react-native-scrollable-tab-view#v0.6.1-jp"
   },
   "jest": {
     "preset": "jest-react-native"
