@@ -78,9 +78,11 @@ export default class RTLapp extends Component {
     }
 
     _renderRow(text, section, row) {
-        let style = [
-            styles.listItem, row % 2 === 0 && styles.even
-        ]
+        let style = [styles.listItem]
+
+        if (row % 2 === 0) {
+            style.push(styles.even)
+        }
 
         return <Text style={style}>{text}</Text>
     }
