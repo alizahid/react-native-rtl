@@ -69,6 +69,17 @@ export default class RTLapp extends Component {
 
                 <View style={styles.separator}/>
 
+				<ScrollableTabView style={styles.tabView} renderTabBar={this._renderTabBar}>
+                    <View style={styles.tab} tabLabel="One">
+                        <ListView style={styles.list} renderScrollComponent={props => <InvertibleScrollView {...props}/>} contentContainerStyle={styles.listContainer} dataSource={this.state.dataSource} renderRow={this._renderRow}/>
+                    </View>
+                    <View style={styles.tab} tabLabel="Two">
+                        <ListView style={styles.list} renderScrollComponent={props => <InvertibleScrollView {...props}/>} contentContainerStyle={styles.listContainer} dataSource={this.state.dataSource} renderRow={this._renderRow}/>
+                    </View>
+                </ScrollableTabView>
+
+                <View style={styles.separator}/>
+
                 <View style={styles.things}>
                     <Text style={[styles.thing, styles.red]}>1</Text>
                     <Text style={[styles.thing, styles.blue]}>2</Text>
